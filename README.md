@@ -1,1 +1,0 @@
-# proyecto-bd1-equipo-16
