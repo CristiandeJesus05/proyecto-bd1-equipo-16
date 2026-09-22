@@ -6,4 +6,4 @@ El modelo cumple con la **1FN** porque cada campo de cada tabla almacena un valo
 
 El modelo cumple con 1FN y todos los atributos no clave **dependen en su totalidad de la clave primaria** (no existen dependencias parciales en tablas con clave primaria compuesta). Las tablas con clave primaria simple (como Pelicula o Metodo_pago) cumplen 2FN por definicion al ser claves simples. Ademas las claves compuestas (como Ticket o Butaca), todos sus datos dependen de la clave primaria compuesta completa. Por eso, este modelo cumple con **2FN**.
 
-**Tercera Forma Normal (1FN):**
+**Tercera Forma Normal (3FN):**
