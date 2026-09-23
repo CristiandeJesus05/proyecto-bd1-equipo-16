@@ -11,3 +11,23 @@
 - Sala -- posee -- Butaca "1:N" : Una sala posee muchas butacas, pero cada butaca pertenece a una unica sala.
 - Funcion -- corresponde a -- Ticket "1:N": Una funcion puede tener muchos tickets vendidos, pero cada ticket corresponde a una unica funcion.
 - Butaca -- es asignada a -- Ticket "1:N": Una butaca puede utilizarse en distintos tickets a lo largo del tiempo, pero cada ticket corresponde a un unica butaca.
+
+* ### Claves primarias (pk):
+- Pelicula: id_pelicula (int)
+- Funcion: id_funcion (int)
+- Cliente: id_cliente (int)
+- Compra: id_compra (int)
+- Sala: id_sala (int)
+- Butaca: id_butaca (int)
+- Metodo_pago: id_pago (int)
+- Ticket: (nro_item, id_compra) (int , int)
+
+* ### Claves foraneas (fk):
+- Funcion: id_pelicula, id_sala (int, int)
+- Compra: id_cliente, id_pago (int, int)
+- Butaca: id_sala (int, int)
+- Ticket: id_compra, id_butaca, id_funcion (int, int , int)
+
+* ### Restricciones:
+- Cliente: DNI, email (UNIQUE)
+- Funcion: fecha, hora (UNIQUE)
