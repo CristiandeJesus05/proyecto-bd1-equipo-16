@@ -11,6 +11,8 @@
 
 ## Entidad: Sala  
 **Propósito/Descripción:** Almacenar información del numero y lugar de la sala considerando cuantas bucatas disponibles hay.  
-**Como interactúa con el sistema:** Representa una entidad fisica donde se llevara a cabo las funciones donde el cliente debe de participar y proporciona los asientos que son comprados por el mismo.
+**Como interactúa con el sistema:** Representa una entidad fisica donde se llevara a cabo las funciones donde el cliente debe de participar y proporciona los asientos que son comprados por el mismo.  
 **Explicacion de su descripcion de la tabla:**  
-* **
+* *id_sala int NOT NULL:* Lo definimos como clave primaria (Constraint pk_sala) para garantizar un identificador unico y no nulo.  
+* *nombre_sala varchar(20):* Se reserva 20 caracteres que tomara el nombre la sala(es opcional)
+* *capacidad int NOT NULL:* Lo definimos para poder saber la capacidad que contiene una sala para poder controlar las ventas de tickets, este campo debe ser obligatorio (NOT NULL) 
