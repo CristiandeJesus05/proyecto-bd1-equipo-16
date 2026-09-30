@@ -1,7 +1,9 @@
+
+```
 ---- Tabla Cliente  ------
 INSERT INTO Cliente (id_cliente, dni, nombre, apellido, email, telefono)
 
-VALUES
+VALUES 
 	---- Cliente 1 ----
 	(123, 47991388, 'Juan', 'Perez', 'juanPerez@gmail.com', '8593928567'),
 	---- Cliente 2 ----
@@ -23,10 +25,11 @@ VALUES
 	---- Cliente 10 ----
 	(234, 74888444, 'Tomas', 'Gonzalez', 'tomasGonzalez@gmail.com', '8475847348');
 
----- Tabla Sala  ------
-INSERT INTO Sala (id_sala, nombre_sala, capacidad)
 
-VALUES
+
+---- Tabla Sala  ------
+INSERT INTO Sala (id_sala, nombre_sala, capacidad) 
+VALUES 
 	---- Sala 1 ----
 	(123, 'Sala A', 200),
 	---- Sala 2 ----
@@ -47,3 +50,4 @@ VALUES
 	(445, 'Sala I', 200),
 	---- Sala 10 ----
 	(786, 'Sala J', 300);
+```
