@@ -33,7 +33,6 @@ id_sala int NOT NULL,<br>
 --- Clave primaria Butaca ---<br>
 CONSTRAINT pk_butaca primary key(id_butaca),<br>
 --- Restricciones tabla Butaca ---<br>
-CONSTRAINT uq_id_butaca UNIQUE(id_butaca),<br>
 CONSTRAINT uq_numero UNIQUE(numero),<br>
 CONSTRAINT uq_fila UNIQUE(fila),<br>
 --- Claves Foraneas ---<br>
@@ -52,7 +51,6 @@ id_sala int NOT NULL,<br>
 --- Clave primaria Funcion ---<br>
 CONSTRAINT pk_funcion primary key(id_funcion),<br>
 --- Restricciones tabla Funcion ---<br>
-CONSTRAINT uq_id_funcion UNIQUE (id_funcion),<br>
 CONSTRAINT ck_precio_acutal CHECK (precio_actual >= 0),<br>
 CONSTRAINT ck_stock_disponible CHECK (stock_disponible >= 0),<br>
 --- Claves Foraneas ---<br>
@@ -71,7 +69,6 @@ id_cliente int NOT NULL,<br>
 --- Clave primaria Compra-<br>
 CONSTRAINT pk_compra primary key(id_compra),<br>
 --- Restricciones tabla Compra ---<br>
-CONSTRAINT uq_id_compra UNIQUE(id_compra),<br>
 CONSTRAINT ck_total_compra CHECK(total_compra >= 0),<br>
 --- Claves foraneas ---<br>
 CONSTRAINT fk_compra_pago foreign key (id_pago) REFERENCES Metodo_Pago(id_pago),<br>
