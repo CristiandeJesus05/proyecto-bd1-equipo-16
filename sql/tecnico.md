@@ -126,3 +126,5 @@ descripcion_pago varchar(50): Se reservan 50 caracteres para describir de manera
 * CONSTRAINT fk_ticket_compra foreign key(id_compra) REFERENCES Compra(id_compra): Relaciona cada ticket con la compra a la que pertenece.
 * CONSTRAINT fk_ticket_butaca foreign key(id_butaca) REFERENCES Butaca(id_butaca): Relaciona el ticket con la butaca seleccionada.
 * CONSTRAINT fk_ticket_funcion foreign key(id_funcion) REFERENCES Funcion(id_funcion): Relaciona el ticket con la función para la cual fue adquirido.
+#### "Atributo precio_unitario":
+Este nos permite conservar el precio histórico del ticket en el momento de la compra. De esta manera, si posteriormente cambia el precio de una función, el precio registrado en los tickets de compras anteriores no se modifica. Esto permite mantener un historial correcto de las operaciones realizadas.
