@@ -97,3 +97,29 @@ CONSTRAINT fk_ticket_compra foreign key(id_compra) REFERENCES Compra(id_compra),
 CONSTRAINT fk_ticket_butaca foreign key(id_butaca) REFERENCES Butaca(id_butaca),<br>
 CONSTRAINT fk_ticket_funcion foreign key(id_funcion) REFERENCES Funcion(id_funcion),<br>
 );<br>
+
+--- TABLA Pelicula ---<br>
+CREATE TABLE Pelicula(<br>
+id_pelicula int NOT NULL,<br>
+titulo varchar(70) NOT NULL,<br>
+genero varchar(30) NOT NULL,<br>
+--- Breve descripcion de la pelicula ----<br>
+descripcion varchar(200) NOT NULL,<br>
+--- Duracion en minutos ---<br>
+duracion int NOT NULL,<br>
+--- Clave primaria pelicula ---<br>
+CONSTRAINT pk_pelicula primary key (id_pelicula),<br>
+--- Restriciones tabla pelicula ---<br>
+CONSTRAINT uq_id_pelicula UNIQUE (id_pelicula),<br>
+
+);<br>
+
+--- Tabla Metodo Pago ---<br>
+CREATE TABLE Metodo_Pago(<br>
+id_pago int NOT NULL,<br>
+descripcion_pago varchar(50),<br>
+---- Clave primaria metodo pago ---<br>
+CONSTRAINT pk_metodo_pago primary key(id_pago),<br>
+---- Restricciones tabla metodo pago ---<br>
+CONSTRAINT uq_id_pago UNIQUE (id_pago),<br>
+);<br>
