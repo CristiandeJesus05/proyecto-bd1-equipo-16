@@ -53,8 +53,6 @@ id_sala int NOT NULL,<br>
 CONSTRAINT pk_funcion primary key(id_funcion),<br>
 --- Restricciones tabla Funcion ---<br>
 CONSTRAINT uq_id_funcion UNIQUE (id_funcion),<br>
-CONSTRAINT uq_fecha UNIQUE(fecha),<br>
-CONSTRAINT uq_hora UNIQUE(hora),<br>
 CONSTRAINT ck_precio_acutal CHECK (precio_actual >= 0),<br>
 CONSTRAINT ck_stock_disponible CHECK (stock_disponible >= 0),<br>
 --- Claves Foraneas ---<br>
@@ -66,7 +64,7 @@ CONSTRAINT fk_funcion_sala foreign key(id_sala) REFERENCES Sala(id_sala),<br>
 CREATE TABLE Compra(<br>
 id_compra int NOT NULL,<br>
 fecha_compra date NOT NULL,<br>
-hora_compra datetime NOT NULL,<br>
+hora_compra time NOT NULL,<br>
 total_compra decimal(10,2) NOT NULL,<br>
 id_pago int NOT NULL,<br>
 id_cliente int NOT NULL,<br>
@@ -90,7 +88,6 @@ id_funcion int NOT NULL,<br>
 --- Clave primaria Ticket ---<br>
 CONSTRAINT pk_ticket primary key(nro_item, id_compra),<br>
 --- Restricciones tabla Ticket ---<br>
-CONSTRAINT uq_nro_item UNIQUE(nro_item),<br>
 CONSTRAINT ck_precio_unitario CHECK(precio_unitario >= 0),<br>
 --- Claves foraneas ---<br>
 CONSTRAINT fk_ticket_compra foreign key(id_compra) REFERENCES Compra(id_compra),<br>
