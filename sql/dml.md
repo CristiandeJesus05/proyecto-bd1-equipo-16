@@ -113,4 +113,21 @@ VALUES
 	(777, '2026-10-04', '21:44:00', 100, 32, 7, 444),
 	--- Funcion 8 ---
 	(888, '2026-10-15', '22:15:00', 100, 43, 8, 555);
-```
+
+
+
+---- Tabla Metodo_pago ------
+INSERT INTO Metodo_pago (id_pago, descripcion_pago)
+
+VALUES 
+	---- Metodo de pago 1 ----
+	(1, 'Efectivo'),
+	---- Metodo de pago 2 ----
+	(2, 'Tarjeta de credito'),
+	---- Metodo de pago 3 ----
+	(3, 'Tarjeta de debito'),
+	---- Metodo de pago 4 ----
+	(4, 'Transferencia'),
+	---- Metodo de pago 5 ----
+	(5, 'Mercado Pago');
+
