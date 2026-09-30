@@ -44,7 +44,7 @@ CONSTRAINT fk_butaca_sala foreign key(id_sala) REFERENCES Sala(id_sala),<br>
 CREATE TABLE Funcion(<br>
 id_funcion int NOT NULL,<br>
 fecha date NOT NULL,<br>
-hora datetime NOT NULL,<br>
+hora time NOT NULL,<br>
 precio_actual decimal(10,2) NOT NULL,<br>
 stock_disponible int NOT NULL,<br>
 id_pelicula int NOT NULL,<br>
