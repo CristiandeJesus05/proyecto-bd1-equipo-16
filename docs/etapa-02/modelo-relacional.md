@@ -30,4 +30,3 @@
 
 * ### Restricciones:
 - Cliente: DNI, email (UNIQUE)
-- Funcion: fecha, hora (UNIQUE)
