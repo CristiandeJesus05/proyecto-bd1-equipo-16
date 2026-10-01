@@ -49,7 +49,9 @@ VALUES
 	(445, 'Sala I', 200),
 	---- Sala 10 ----
 	(786, 'Sala J', 300);
-  
+
+
+
 ---- Tabla Butaca -----
 INSERT INTO Butaca (id_butaca, numero, fila, id_sala)
 
@@ -70,6 +72,8 @@ VALUES
 	(543, 7, 8, 788),
 	--- Butaca 8 ---
 	(654, 8, 9, 555);
+
+
 
 ---- Table Pelicula ----
 INSERT INTO Pelicula (id_pelicula, titulo, genero, descripcion, duracion) 
@@ -130,6 +134,8 @@ VALUES
 	(4, 'Transferencia'),
 	---- Metodo de pago 5 ----
 	(5, 'Mercado Pago');
+
+
 
 ---- Tabla Compra ------
 
