@@ -7,7 +7,7 @@ RN.02: Gestión de películas: Cada película deberá estar registrada en el sis
 identificador único.   
 RN.03: Gestión de salas: Cada sala deberá contar con un identificador único y una capacidad 
 determinada de butacas.   
-RN.04: Gestión de butacas: Cada butaca deberá tener una fila y un numero asignado.   
+RN.04: Gestión de butacas: Cada butaca deberá tener una fila y un numero asignado. Una misma butaca no puede venderse dos veces para la misma función.   
 RN.05: Funciones: Cada función deberá estar asociada a una única película, una única sala, 
 una única, fecha y un horario determinado.   
 RN.06: No podrán existir dos funciones programadas en la misma sala, fecha y horario.   
