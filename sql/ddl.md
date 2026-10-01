@@ -86,6 +86,8 @@ id_funcion int NOT NULL,<br>
 CONSTRAINT pk_ticket primary key(nro_item, id_compra),<br>
 --- Restricciones tabla Ticket ---<br>
 CONSTRAINT ck_precio_unitario CHECK(precio_unitario >= 0),<br>
+--- Evita vender la misma butaca dos veces para una misma funcion ---<br>
+CONSTRAINT uq_ticket_funcion_butaca UNIQUE(id_funcion, id_butaca),<br>
 --- Claves foraneas ---<br>
 CONSTRAINT fk_ticket_compra foreign key(id_compra) REFERENCES Compra(id_compra),<br>
 CONSTRAINT fk_ticket_butaca foreign key(id_butaca) REFERENCES Butaca(id_butaca),<br>
