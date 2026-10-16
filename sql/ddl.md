@@ -34,8 +34,7 @@ id_sala int NOT NULL,<br>
 --- Clave primaria Butaca ---<br>
 CONSTRAINT pk_butaca primary key(id_butaca),<br>
 --- Restricciones tabla Butaca ---<br>
-CONSTRAINT uq_numero UNIQUE(numero),<br>
-CONSTRAINT uq_fila UNIQUE(fila),<br>
+CONSTRAINT uq_butaca_sala UNIQUE (id_sala, fila, numero),<br>
 --- Claves Foraneas ---<br>
 CONSTRAINT fk_butaca_sala foreign key(id_sala) REFERENCES Sala(id_sala),<br>
 );<br>
