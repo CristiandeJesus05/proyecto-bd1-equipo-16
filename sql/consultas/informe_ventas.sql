@@ -22,3 +22,4 @@ GROUP BY
     p.id_pelicula,
     p.titulo
 ORDER BY total_recaudado DESC;
+--- Esta consulta pertenece al intervalo de fechas del "2026-10-04" hasta el "2026-10-09", Cambio realizado de archivo---.
