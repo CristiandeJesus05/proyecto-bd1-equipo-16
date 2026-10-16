@@ -1,5 +1,4 @@
-
------- cantidad total de ventas por genero (ej "Romantica") ---------
+---- Generos Populares: que hayan vendido mas de 5 tickets -----------
 SELECT 
     p.genero,
     COUNT(t.nro_item) AS total_entradas_vendidas,
@@ -13,4 +12,6 @@ INNER JOIN
 GROUP BY 
     p.genero
 HAVING 
-    p.genero = 'Romantica';
+    COUNT(t.nro_item) >= 5
+ORDER BY 
+    total_entradas_vendidas DESC;
