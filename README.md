@@ -1,7 +1,7 @@
 * # Proyecto-BD1-Grupo16   
 
 
-*  Nombre del equipo: "Cines del Paraná”   
+*  Nombre del equipo: "Cine del Paraná”   
 * ### Alumnos:  
 1. Solis, Ignacio Emiliano   
 2. Segovia, Cristian de Jesús  
