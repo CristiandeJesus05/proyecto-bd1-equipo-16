@@ -26,6 +26,7 @@ CONSTRAINT uq_id_sala UNIQUE (id_sala),
 );
 
 --- TABLA Butaca ---<br>
+CREATE TABLE Butaca(<br>
 id_butaca int NOT NULL,<br>
 numero int NOT NULL,<br>
 fila varchar(5) NOT NULL,<br>
