@@ -1,3 +1,4 @@
+CREATE DATABASE Cine_del_Parana
 --- TABLA Cliente ---
 CREATE TABLE Cliente(
 id_cliente int NOT NULL,
