@@ -15,5 +15,5 @@ Mostrar el número de compra, fecha, cliente, método de pago, película, butaca
 * Ejercicio Nª5: Funciones programadas por película  
 Mostrar el título de la película, fecha, horario, nombre de la sala y precio de cada función, ordenadas por fecha y horario. 
   
-3.* Ejercicio Nª6: Historial de entradas por cliente  
+* Ejercicio Nª6: Historial de entradas por cliente  
 Mostrar el ID del cliente, nombre completo, número de compra, fecha de compra, película y precio de cada entrada.  
