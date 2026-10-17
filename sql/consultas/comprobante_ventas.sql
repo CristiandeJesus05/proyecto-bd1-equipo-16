@@ -38,7 +38,7 @@ SELECT
     SUM(CASE WHEN id_pago = 7 THEN total_compra END) AS Tarjeta_prepaga
 FROM Compra;
 
---Mostrar el número de compra, fecha, cliente, método de pago, película, butaca y precio de cada entrada.
+--Detalle de una compra (comprobante)
 select com.id_compra as 'Id de Compra',
 	   com.fecha_compra as 'Fecha de Compra',
 	   com.id_cliente as 'Id de Cliente',
@@ -57,7 +57,7 @@ select com.id_compra as 'Id de Compra',
 		inner join Funcion fun on tik.id_funcion = fun.id_funcion
 		inner join Pelicula pel on fun.id_pelicula = pel.id_pelicula;
 
---Mostrar el título de la película, fecha, horario, nombre de la sala y precio de cada función, ordenadas por fecha y horario.
+--Funciones programadas por película
 SELECT  Pel.titulo as 'Nombre de la Pelicula',
 		Fun.fecha as 'Fecha de la Pelicula',
 		Fun.hora as 'Horario de la Pelicula',
@@ -68,7 +68,7 @@ SELECT  Pel.titulo as 'Nombre de la Pelicula',
 	inner join Sala sal on fun.id_sala = sal.id_sala
 	order by concat(fun.fecha,' ',fun.hora) asc;
 
---Mostrar el ID del cliente, nombre completo, número de compra, fecha de compra, película y precio de cada entrada.
+--Historial de entradas por cliente
  select com.id_cliente as 'Id de cliente',
 		concat(cli.apellido,' ',cli.nombre) 'Apellido y Nombre',
 		com.id_compra as 'Nùmero de compra',
