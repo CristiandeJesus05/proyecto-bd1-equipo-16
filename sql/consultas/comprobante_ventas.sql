@@ -38,3 +38,46 @@ SELECT
     SUM(CASE WHEN id_pago = 7 THEN total_compra END) AS Tarjeta_prepaga
 FROM Compra;
 
+--Mostrar el número de compra, fecha, cliente, método de pago, película, butaca y precio de cada entrada.
+select com.id_compra as 'Id de Compra',
+	   com.fecha_compra as 'Fecha de Compra',
+	   com.id_cliente as 'Id de Cliente',
+	   concat(cli.apellido,' ',Cli.nombre) as 'Apellido y Nombre',
+	   met.descripcion_pago as 'Tipo de Pago',
+	   pel.titulo as 'Titulo de la Pelicula',
+	   but.numero as 'Butaca n°',
+	   but.fila as 'Fila n°',
+	   tik.precio_unitario as 'Precio de entrada',
+	   com.total_compra as 'Precio total'
+		from ticket tik
+		inner join Compra com on tik.id_compra = com.id_compra
+		inner join Cliente cli on com.id_cliente = cli.id_cliente
+		inner join Metodo_Pago met on com.id_pago = met.id_pago
+		inner join Butaca but on tik.id_butaca = but.id_butaca
+		inner join Funcion fun on tik.id_funcion = fun.id_funcion
+		inner join Pelicula pel on fun.id_pelicula = pel.id_pelicula;
+
+--Mostrar el título de la película, fecha, horario, nombre de la sala y precio de cada función, ordenadas por fecha y horario.
+SELECT  Pel.titulo as 'Nombre de la Pelicula',
+		Fun.fecha as 'Fecha de la Pelicula',
+		Fun.hora as 'Horario de la Pelicula',
+		Sal.nombre_sala as 'Nombre de la Sala',
+		Fun.precio_actual as 'El Precio de cada Funcion'
+	from Funcion fun
+	inner join Pelicula pel on fun.id_pelicula = pel.id_pelicula
+	inner join Sala sal on fun.id_sala = sal.id_sala
+	order by concat(fun.fecha,' ',fun.hora) asc;
+
+--Mostrar el ID del cliente, nombre completo, número de compra, fecha de compra, película y precio de cada entrada.
+ select com.id_cliente as 'Id de cliente',
+		concat(cli.apellido,' ',cli.nombre) 'Apellido y Nombre',
+		com.id_compra as 'Nùmero de compra',
+		com.fecha_compra as 'Fecha de Compra',
+		pel.titulo as 'Nombre de la pelicula',
+		tik.precio_unitario as 'Precio de cada entrada'
+		from Ticket tik
+		inner join Compra com on tik.id_compra = com.id_compra
+		inner join Cliente cli on com.id_cliente = cli.id_cliente
+		inner join Funcion fun on tik.id_funcion = fun.id_funcion
+		inner join Pelicula pel on fun.id_pelicula = pel.id_pelicula;
+
