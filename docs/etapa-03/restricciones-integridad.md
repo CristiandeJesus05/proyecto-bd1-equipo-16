@@ -1,4 +1,4 @@
-## Entidad: Pelicula  
+## Entidad: Pelicula  y Metodo Pago
 
 ## Restricciones  
 
