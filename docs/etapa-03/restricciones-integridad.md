@@ -1,6 +1,6 @@
 ## Entidad: Pelicula  
 
-## Restricciones:  
+## Restricciones  
 
 NOT NULL: En Pelicula, obliga a que cada campo (título, género, descripción y duración) reciba un valor obligatorio, asegurando que la cartelera no tenga información   incompleta. En Metodo_Pago, la columna descripcion_pago carece de esta restricción, lo cual es un error de diseño el sistema permitiría guardar un método de pago   sin nombre  
 
@@ -8,7 +8,7 @@ PRIMARY KEY: Define a id_pelicula y id_pago como los identificadores principales
 
 UNIQUE: En ambas tablas declaraste CONSTRAINT uq_id UNIQUE sobre los mismos campos que ya son claves primarias. Esto es innecesario, ya que la restricción PRIMARY   KEY aplica implícitamente la unicidad absoluta  
 
-## Integridad:  
+## Integridad  
 
 Integridad de Entidad: Se garantiza mediante las claves primarias. El sistema hará matemáticamente imposible que existan dos películas o dos métodos de pago con el   mismo número de ID  
 
