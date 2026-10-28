@@ -23,3 +23,51 @@
 
 * *id_pago int NOT NULL: lo definimos como llave primaria (CONSTRAINT pk_metodo_pago) para garantizar un identificador único y no nulo para cada método de pago. Además, se define CONSTRAINT uq_id_pago UNIQUE (id_pago) para reforzar su unicidad.
 descripcion_pago varchar(50): Se reservan 50 caracteres para describir de manera clara la forma de pago (por ejemplo, "Tarjeta de Crédito", "Efectivo", "Mercado Pago"). No se le agregó explícitamente la restricción "NOT NULL" en su creación, por lo que permite valores nulos, aunque su objetivo principal es detallar el nombre del método.
+
+## Entidad: Butaca
+**Propósito/Descripción:** Almacenar las butacas disponibles dentro de cada sala del cine<br>
+
+**Como interactúa con el sistema:** Representa cada asiento fisico de una sala y permite asociarlo con los tickets vendidos para una determinada funcion.
+
+**Explicacion de su descripcion de la tabla:**
+* *id_butaca int NOT NULL:* Se utilizia como identificador unico de cada butaca. Se define como clave primaria mediante CONSTRAINT pk_butaca, garantizando que cada registro pueda identificarse de manera unica y que el valor no sea nulo.
+* *numero in NOT NULL:* Representa el numero de la butaca dentro de la sala. Se utiliza el tipo int porque se trata de un valor numerico entero y se establece NOT NULL debido que todas las butacas debe poseer cada una un numero.
+* *fila varchar(5) NOT NULL:* Almacena la identificacion de la fila a la que pertenece cada butaca, por ejemplo: "A", "B", "C". Utilizamos varchar(5) porque la fila puede representarse mediante letras o una combinacion de caracteres y Se establece NOT NULL porque cada una de las butacas debe pertenecer a una fila
+* *id_sala: int NOT NULL:* Representa la sala en la que se encuentra ubicada la Butaca. Utilizamos int debido a que corresponde al identificador unico y numerico de la sala y se establece NOT NULL porque una butaca no puede existir sin estar asociada a una sala.
+
+## Entidad: Funcion
+
+**Explicacion de su descripcion de la tabla:** 
+* *id_funcion int NOT NULL:* Lo Utilizamos como identificador unico de cada funcion. Se define como clave primaria mediante CONSTRAINT pk_funcion, garantizando que cada funcion pueda identificarse de manera unica y que el valor no sea nulo.
+* *fecha date NOT NULL:* Almacena la fecha en la que se realizarala funcion. Utilizamos el tipo date para almacenar el dia, mes y año. Lo establecemos como NOT NULL porque toda funcion debe tener una fecha asignada.
+* *hora time NOT NULL:* Almacena el horario en el que comienza la funcion y utilizamos time para almacenar informacion relacionada con la hora. Lo establecemos como NOT NULL porque toda funcion debe tener un horario definido.
+* *precio_actual decimal(10,2) NOT NULL:* Representa el precio actual del ticket para la función. Utilizamos decimal(10,2) porque permite almacenar valores monetarios con dos posiciones decimales. Establecemos NOT NULL porque toda función debe tener un precio definido.
+* *stock_disponible int NOT NULL:* Representa la cantidad de tickets disponibles para la función. Utilizamos int porque se trata de una cantidad entera y se establece NOT NULL porque el sistema debe conocer la cantidad de tickets disponibles.
+* *id_pelicula int NOT NULL:* Identifica la película que sera proyectada en la función. La utlizamos como clave foranea para relacionar la función con una pelicula ya existente.
+* *id_sala int NOT NULL:* Identifica la sala donde se realizara la función. La utilizamos como clave foránea para relacionar la función con una sala existente.
+
+## Entidad: Compra
+**Propósito/Descripción:** Almacenar la información de cada compra realizada por un cliente, incluyendo la fecha, el total y el método de pago utilizado.
+
+**Como interactúa con el sistema:** Representa la operación mediante la cual un cliente adquiere uno o varios tickets para diferentes funciones. Permite registrar quien realizo la compra y mediante que método de pago.
+
+**Explicacion de su descripcion de la tabla:** 
+* *id_compra int NOT NULL:* Se utiliza como identificador único de cada compra. Se define como clave primaria mediante CONSTRAINT pk_compra, garantizando que cada compra tenga un identificador único y no nulo.
+* *fecha_compra date NOT NULL:* Almacena la fecha en la que se realizó la compra. Se utiliza date para registrar el día, mes y año. Se establece NOT NULL porque toda compra debe tener una fecha registrada.
+* *hora_compra time NOT NULL:* Almacena el horario en el que se realizó la compra. Se utiliza time para registrar la hora y se establece NOT NULL porque toda compra debe registrar cuándo fue realizada.
+* *total_compra decimal(10,2) NOT NULL:* Representa el importe total de la compra. Utilizamos decimal(10,2) para trabajar con valores monetarios y permitir dos posiciones decimales. Se establece NOT NULL porque toda compra debe tener un importe total.
+* *id_pago int NOT NULL:* Identifica el método de pago utilizado para realizar la compra. Se utiliza como clave foranea para relacionar la compra con un metodo de pago existente.
+* *id_cliente int NOT NULL:* Identifica al cliente que realizó la compra. Se utiliza como clave foranea para relacionar cada compra con un cliente registrado en el sistema.
+
+## Entidad: Ticket
+
+**Propósito/Descripción:** Almacenar el detalle de cada ticket adquirido dentro de una compra, indicando su precio, butaca y función correspondiente.
+
+**Como interactúa con el sistema:** Representa cada entrada adquirida por el cliente. Permite conocer que butaca fue seleccionada, para que función y cual era el precio del ticket en el momento de realizar la compra.
+
+**Explicacion de su descripcion de la tabla:** 
+* *nro_item int NOT NULL:* Representa el número de ítem del ticket dentro de una compra. Se utiliza int porque corresponde a un numero entero y se establece NOT NULL porque todo ticket debe poseer un número de ítem.
+* *id_compra int NOT NULL:* Identifica la compra a la que pertenece el ticket. Se utiliza como parte de la clave primaria compuesta y tambien como clave foranea hacia la tabla Compra.
+* *precio_unitario decimal(10,2) NOT NULL:* Almacena el precio que tenía el ticket en el momento en que se realizo la compra. Utilizamos decimal(10,2) porque representa un valor monetario y permite conservar dos posiciones decimales. Se establece NOT NULL porque cada ticket debe registrar su precio.
+* *id_butaca int NOT NULL:* Identifica la butaca seleccionada para el ticket. La utilizamos como clave foranea para relacionar el ticket con una butaca existente.
+* *id_funcion int NOT NULL:* Identifica la función del cine para la cual se adquirio el ticket. La utilizamos como clave foranea para relacionar el ticket con una funcion existente.
