@@ -60,8 +60,7 @@ id_sala int NOT NULL,
 --- Clave primaria Butaca ---
 CONSTRAINT pk_butaca primary key(id_butaca),
 --- Restricciones tabla Butaca ---
-CONSTRAINT uq_numero UNIQUE(numero),
-CONSTRAINT uq_fila UNIQUE(fila),
+CONSTRAINT uq_butaca_sala UNIQUE (id_sala, fila, numero);
 --- Claves Foraneas ---
 CONSTRAINT fk_butaca_sala foreign key(id_sala) REFERENCES Sala(id_sala)
 );
@@ -134,3 +133,10 @@ ALTER TABLE Funcion add constraint uq_funcion_especifica UNIQUE (fecha,hora,id_s
 --Al poner unico los 3, nos aseguramos que una funcion no empiece en la misma sala y hora
 ---ERROR DETECTADO : una funcion puede reproducir la pelicula si este ya está reproduciendo una pelicula un minuto despues
 ---Recordatorio: solucionar a futuro con funciones
+
+--- TICKET ----
+-- Evitar vender la misma butaca dos veces
+-- para una misma función.
+ALTER TABLE Ticket
+ADD CONSTRAINT uq_ticket_funcion_butaca
+    UNIQUE (id_funcion, id_butaca);
