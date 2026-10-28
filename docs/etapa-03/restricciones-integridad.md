@@ -15,3 +15,29 @@ Integridad de Entidad: Se garantiza mediante las claves primarias. El sistema ha
 Integridad de Dominio: Se mantiene limitando el tipo y tamaño de la información. Por ejemplo, duracion solo aceptará números enteros, y descripcion_pago truncará o   rechazará cualquier texto superior a 50 caracteres  
 
 Preparación para la Integridad Referencial: Ambas son tablas maestras independientes no tienen claves foráneas propias. Su función en la integridad global de tu   sistema es servir como origen de datos. La futura tabla Funcion necesitará apuntar obligatoriamente a un id_pelicula válido que ya exista aquí, y la futura tabla   Venta solo podrá registrar transacciones si el id_pago existe previamente en esta tabla Metodo_Pago  
+
+## Entidad: Butaca
+
+## Restricciones:
+* CONSTRAINT uq_numero UNIQUE(numero): Garantiza que no existan dos registros con el mismo numero de butaca
+* CONSTRAINT uq_fila UNIQUE(fila): Garantiza que no existan dos registros con la misma fila.
+
+## Integridad
+
+## Entidad: Funcion
+
+## Restricciones:
+* CONSTRAINT ck_precio_actual CHECK(precio_actual >= 0): Garantiza que el precio de una función no pueda ser negativo.
+* CONSTRAINT ck_stock_disponible CHECK(stock_disponible >= 0): Garantiza que la cantidad de tickets disponibles no pueda ser negativa.
+
+## Entidad: Compra
+
+## Restricciones:
+* CONSTRAINT ck_total_compra CHECK(total_compra >= 0): Garantiza que el total de una compra no pueda tener un valor negativo.
+
+## Integridad:
+
+## Entidad: Ticket
+
+## Restricciones:
+* CONSTRAINT ck_precio_unitario CHECK(precio_unitario >= 0): Garantiza que el precio de un ticket no pueda ser negativo.
