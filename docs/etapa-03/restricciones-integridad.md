@@ -1,3 +1,29 @@
+## Entidad: Cliente  
+## Restricciones  
+* pk_cliente (PRIMARY KEY sobre id_cliente): es la clave primaria de la tabla, o sea, lo que identifica a cada cliente de manera única. Gracias a ella no pueden existir dos clientes con el mismo id_cliente, y tampoco puede quedar ese campo vacío.
+* uq_dni (UNIQUE sobre dni): asegura que cada DNI se registre una sola vez. Es la forma de evitar que una misma persona figure dos veces como cliente.  
+* uq_email (UNIQUE sobre email): evita que dos clientes tengan el mismo correo electrónico. Esto es útil porque el email suele usarse para contactar al cliente o enviarle comprobantes de compra, y tiene que ser único de cada persona.  
+* NOT NULL en id_cliente, dni, nombre, apellido, email y telefono: obliga a que todos los datos se completen al registrar un cliente. No se puede cargar un cliente con datos vacios ni dejar campos en blanco.
+
+## Integridad  
+- Integridad de entidad: La clave primaria se encarga de ser única e identificable, porque obliga a que cada cliente tenga un id_cliente propio y nunca nulo. Además, los UNIQUE de dni y email refuerzan la idea de que cada persona real se registre una sola vez.  
+- Integridad de dominio: Los tipos de dato y los NOT NULL solo acepta valores válidos lo que permite registrar cliente sin datos faltantes. Por ejemplo, si alguien intenta guardar letras en el campo dni, o dejar el email sin completar, el motor rechaza la operación. 
+- Integridad referencial: esta tabla no tiene claves foráneas, así que no depende de ninguna otra tabla. Sí funciona como tabla padre, porque la tabla Venta va a referenciar a Cliente a través de id_cliente. Eso garantiza que no se pueda registrar una venta a nombre de un cliente que no existe, y que tampoco se pueda borrar un cliente que ya tiene ventas asociadas, protegiendo así el historial.
+
+
+
+## Entidad: Sala  
+## restricciones:  
+- pk_sala (PRIMARY KEY sobre id_sala): es la clave primaria de la tabla, o sea, lo que identifica a cada sala de manera única. Gracias a ella no pueden existir dos salas con el mismo id_sala, y tampoco puede quedar ese campo vacío.  
+- NOT NULL en id_sala y capacidad: obliga a que toda sala tenga un identificador y una capacidad de butacas. No se puede registrar una sala sin indicar cuántas butacas tiene.  
+- nombre_sala sin NOT NULL: esta columna sí admite valores vacíos, así que se puede registrar una sala sin nombre. Tampoco tiene un UNIQUE, por lo que dos salas podrían llamarse igual (por ejemplo, dos salas llamadas "Sala 1").   
+## integridad:
+- Integridad de entidad: significa que cada fila de la tabla tiene que ser única e identificable. Por lo tanto, cada sala tiene un id_sala propio y nunca nulo, de modo que ninguna sala se pueda confundir con otra.  
+- Integridad de dominio:Los tipos de dato y los NOT NULL solo acepta valores válidos lo que permite registrar las salas sin datos faltantes. Por ejemplo, si alguien intenta guardar letras en capacidad, o dejar la capacidad sin completar, el motor rechaza la operación. 
+- Integridad referencial: esta tabla no tiene claves foráneas, pero funciona como tabla padre, porque Funcion y Butaca van a referenciar a Sala a través de id_sala. Eso garantiza que no se pueda programar una función ni crear una butaca en una sala que no existe, y que tampoco se pueda borrar una sala que ya tiene funciones o butacas asociadas, protegiendo así la información relacionada.
+
+  
+
 ## Entidad: Pelicula  y Metodo Pago
 
 ## Restricciones  
@@ -10,7 +36,7 @@ UNIQUE: En ambas tablas declaraste CONSTRAINT uq_id UNIQUE sobre los mismos camp
 
 ## Integridad  
 
-Integridad de Entidad: Se garantiza mediante las claves primarias. El sistema hará matemáticamente imposible que existan dos películas o dos métodos de pago con el   mismo número de ID  
+Integridad de Entidad: Se garantiza mediante las claves primarias. El sistema hará matemáticamente imposible que existan dos películas o dos métodos de pago con el  mismo número de ID  
 
 Integridad de Dominio: Se mantiene limitando el tipo y tamaño de la información. Por ejemplo, duracion solo aceptará números enteros, y descripcion_pago truncará o   rechazará cualquier texto superior a 50 caracteres  
 
