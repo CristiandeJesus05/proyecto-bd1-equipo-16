@@ -1,22 +1,4 @@
-
--- CONSIGNA 1: TRIGGERS DE AUDITORIA (UPDATE y DELETE)
--- Guardan en tablas auxiliares los valores ANTERIORES del registro,
--- mas la fecha, la hora y el usuario de la base de datos que hizo la
--- operacion
--- Tablas auditadas: Cliente, Funcion y Compra
---
--- CONSIGNA 2: TRIGGER QUE BLOQUEA EL DELETE
--- Tabla protegida: Pelicula (INSTEAD OF DELETE)
---
--- Se puede ejecutar completo varias veces.
--- Si cambia el nombre de la base, modificar la linea USE de arriba
-
-
--- 1) TABLAS AUXILIARES DE AUDITORIA
--- Columnas comunes: operacion ('UPDATE' o 'DELETE'), fecha_operacion,
--- hora_operacion y usuario. El resto son los valores viejos del registro
-
- 
+-- 1 TABLAS AUXILIARES DE AUDITORIA
 IF OBJECT_ID('Aud_Cliente', 'U') IS NULL
 CREATE TABLE Aud_Cliente(
     id_auditoria    int IDENTITY(1,1) NOT NULL,
@@ -70,14 +52,8 @@ CREATE TABLE Aud_Compra(
 );
 GO
  
--- 2) TRIGGERS DE AUDITORIA
--- En un trigger AFTER UPDATE/DELETE, la tabla "deleted" contiene los
--- valores anteriores. Si existen filas en "inserted" fue un UPDATE;
--- si no, fue un DELETE
--- USER_NAME() devuelve el usuario de la base de datos que ejecuto la
--- operacion (para ver el login del servidor se puede usar SUSER_SNAME())
+-- 2 TRIGGERS DE AUDITORIA
 
- 
 CREATE OR ALTER TRIGGER trg_aud_cliente
 ON Cliente
 AFTER UPDATE, DELETE
@@ -137,11 +113,8 @@ END;
 GO
  
  
--- 3) TRIGGER QUE NO PERMITE BORRAR (consigna 2)
--- INSTEAD OF DELETE reemplaza al DELETE: emite un mensaje de error y
--- la operacion no se realiza
+-- 1 TRIGGER QUE NO PERMITE BORRAR
 
- 
 CREATE OR ALTER TRIGGER trg_pelicula_no_delete
 ON Pelicula
 INSTEAD OF DELETE
@@ -152,10 +125,6 @@ BEGIN
     THROW 50040, 'No se permite eliminar peliculas: se conserva el historial de funciones.', 1;
 END;
 GO
- 
--- NOTA: si necesitas vaciar la tabla Pelicula para recargar los lotes de
--- datos, desactiva el trigger antes y activalo despues:
---     DISABLE TRIGGER trg_pelicula_no_delete ON Pelicula;
---     ENABLE  TRIGGER trg_pelicula_no_delete ON Pelicula;
+
 
  
