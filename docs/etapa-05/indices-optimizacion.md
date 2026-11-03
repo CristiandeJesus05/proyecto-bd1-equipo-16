@@ -250,7 +250,8 @@ Estas instrucciones permiten obtener información sobre las lecturas realizadas 
 Por otra parte, las mejoras del procedimiento se comprueban mediante compras de prueba, verificando que los registros se almacenen correctamente, que los tickets queden asociados a la compra y que el stock se actualice según la cantidad de entradas adquiridas.
 
 <img width="620" height="97" alt="Captura de pantalla 2026-11-03 193508" src="https://github.com/user-attachments/assets/832d04e5-6f43-4ece-ad56-553d0b429b76" />
-Esta es el resultado de la prueba de compra realizada.
+
+*Esta es el resultado de la prueba de compra realizada.*
 
 ---
 
