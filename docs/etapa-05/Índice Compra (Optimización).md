@@ -5,7 +5,9 @@ Tiempo total de ejecución = 2851 ms
 Cantidad de lecturas lógicas = 4714
 Operación Principal = Clustered Index Scan
 
-![[sin_indice.png]]
+
+<img width="942" height="205" alt="sin_indice" src="https://github.com/user-attachments/assets/6cd1a0c8-1f87-4796-b6be-8b3219239e89" />
+
  
 **Métricas Con Índice sobre la fecha:**
 Tiempo de CPU = 1406 ms
@@ -13,7 +15,8 @@ Tiempo total de ejecución = 5402 ms
 Cantidad de lecturas lógicas = 613.928
 Operación Principal = Index Seek + Key Lookup
 
-![[conIndiceSobreFecha.png]]
+<img width="923" height="259" alt="conIndiceSobreFecha" src="https://github.com/user-attachments/assets/08fcf234-8b38-47b0-b301-472b9ce811e2" />
+
 
 
 **Métricas Con Índice Con Cobertura :**
@@ -21,7 +24,8 @@ Tiempo de CPU = 187ms
 Tiempo total de ejecución = 3960 ms
 Cantidad de lecturas lógicas = 550
 Operación Principal = Index Seek
-![[conIndice.png]]
+
+<img width="890" height="216" alt="conIndice" src="https://github.com/user-attachments/assets/b14fb105-044f-4139-b544-6c6b2e2a3aac" />
 
 
 **Conclusión del Rendimiento de la tabla Compra con su diferentes índices:**
