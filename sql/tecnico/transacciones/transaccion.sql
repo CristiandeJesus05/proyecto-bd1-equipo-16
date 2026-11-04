@@ -1,4 +1,4 @@
--- Procedimiento con transaccion
+-- Procedimiento es usado en otra carpeta, en este caso se enfoca en el uso de las transacciones
 CREATE OR ALTER PROCEDURE dbo.sp_RegistrarCompra
     @IdCompra INT,
     @FechaCompra DATE,
