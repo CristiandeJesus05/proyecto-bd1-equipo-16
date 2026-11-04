@@ -39,12 +39,7 @@ Por último, el índice de cobertura (`INCLUDE`) logra la máxima optimización 
 
 **Tabla Comparativa de Rendimientos:** 
 
-![[tablaComparativa.png]]
-
-
-
-
-
+<img width="587" height="162" alt="tablaComparativa" src="https://github.com/user-attachments/assets/128b889b-2821-4e38-a494-ab1245733628" />
 
 
 
