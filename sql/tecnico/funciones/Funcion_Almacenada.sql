@@ -22,4 +22,3 @@ BEGIN
     RETURN @TotalRecaudado;
 
 END;
-

@@ -315,3 +315,98 @@ SELECT
 * Mensaje de confirmacion con la leyenda "Compra registrada correctamente"
 
 *Todo en una columna que la llamamos "resultado"*.
+
+
+## Funciones Almacenadas (Recaudacion de peliculas)
+
+### Creacion y aplicacion de la funcion *fn_RecaudacionPelicula.*
+Para la creacion y posterior aplicacion de dicha funcion utilizamos las siguientes tablas para su elaboracion y debidad relacion entre las mismas
+* Pelicula: Contiene los datos de las peliculas disponibles.
+* Funcion: Relacionada a cada pelicula sus respectivas funciones.
+* Tickets: Cuenta con los tickets registrados y el precio_unitario de cada uno.
+
+### Creamos y definimos las funcion
+
+CREATE OR ALTER FUNCTION dbo.fn_RecaudacionPelicula
+(
+    @IdPelicula INT
+)
+RETURNS DECIMAL(10,2)
+AS
+BEGIN
+
+Definimos la funcion con sus respectivos parametros
+* CREATE OR ALTER FUNCTION: Creamos la funcion correspondiente.
+* dbo: Indica al esquema que pertenece
+* fn_RecaudacionPelicula: Es el respectivo nombre que utilizaremos para nuestra funcion
+* @IdPelicula INT: El parametro identificador de la pelicula cuya recaudacion queremos calcular y su respectivo tipo de dato entero (INT).
+* RETURNS DECIMAL(10,2): Indicamos que la funcion retornara un valor numerico (en este caso el importe recaudado de una funcion) con hasta 10 digitos y 2 decimales.
+* AS: indicamos la continuacion para la definicion del cuerpo de nuestra funcion.
+* BEGIN: Marca el inicio del conjunto de instrucciones que se ejecutaran. 
+
+### Creacion de la variable para almacenar el resultado obtenido
+
+DECLARE @TotalRecaudado DECIMAL(10,2);
+
+La variable declarada y llamada @TotalRecaudado tendra como finalidad almacenar el importe total que recaudo una pelicula.
+
+### Calcular la recaudacion de la pelicula
+
+SELECT
+    @TotalRecaudado = COALESCE(SUM(t.precio_unitario), 0)
+    FROM Ticket t
+    INNER JOIN Funcion f
+    ON t.id_funcion = f.id_funcion
+    WHERE f.id_pelicula = @IdPelicula;
+    RETURN @TotalRecaudado;
+
+END;
+
+* @TotalRecaudado = COALESCE(SUM(t.precio_unitario), 0): La suma realizada se almacenara en la variable que creamos posteriormente llamada "@TotalRecaudado".
+* Con "FROM Ticket t" Consultamos a la tabla "Ticket" a traves del alias "t"
+* INNER JOIN Funcion f ON t.id_funcion = f.id_funcion: Relacionamos las tablas correspondientes con la igualdad relacionamos cada ticket con su funcion correspondiente
+* Mediante el filtro "WHERE f.id_pelicula = @IdPelicula" consideramos unicamente las funciones correspondientes a la dicha pelicula que recibiremos como parametro
+* Finalmente a traves del "RETURN @TotalRecaudado;" devolveremos la recaudacion total de la pelicula.Posteriormente con "END;" indicamos el cierre del cuerpo de nuestra funcion.
+
+### Demostracion de uso de nuestra funcion
+
+#### Ejemplo nro 1: Consulta de la recaudacion de las peliculas
+SELECT
+    p.id_pelicula,
+    p.titulo AS pelicula,
+    dbo.fn_RecaudacionPelicula(p.id_pelicula) AS recaudacion_total
+FROM Pelicula p
+ORDER BY recaudacion_total DESC;
+
+#### Pasos y detalles de la consulta
+* 1 - Consultamos todas las peliculas de la tabla Pelicula
+* 2 - Obtenemos el identificador y el titulo de cada una de las peliculas
+* 3 - Ejecutamos nuestra funcion "RecaudacionPelicula(p.id_pelicula)": para cada pelicula
+* 4 - Mostramos la recaudacion total calculada.
+* 5 - Ordenamos los resultados de mayor a menor recaudacion correspondiente.
+
+* Resultado correspondiente:
+<img width="299" height="93" alt="Captura de pantalla 2026-11-03 212737" src="https://github.com/user-attachments/assets/8de4d3d6-e74e-4350-9f71-3dbdc4b631c6" />
+
+#### Ejemplo nro 2: Consulta por una pelicula en especifico:
+
+#### Pasos y detalles de la consulta
+En este caso consultaremos por la primera pelicula con titutlo "Inception"
+
+* Resultado correspondiente:
+<img width="192" height="107" alt="Captura de pantalla 2026-11-03 214508" src="https://github.com/user-attachments/assets/57032629-9d0f-4fc3-a00c-96dede95ab32" />
+
+### Ejemplo nro 3: Consulta de la recaudacion de las peliculas junto los otros datos relacionados
+SELECT
+    p.titulo,
+    p.genero,
+    p.duracion,
+    dbo.fn_RecaudacionPelicula(p.id_pelicula) AS recaudacion
+FROM Pelicula p;
+
+#### Pasos y detalles de la consulta
+* Al igual que la consulta del "Ejemplo nro 1" nos retornara los totales recaudados junto al titulo de la pelicula pero en este caso el añadido del genero y la duracion de cada pelicula.
+
+* Resultado correspondiente:
+<img width="361" height="118" alt="Captura de pantalla 2026-11-03 214739" src="https://github.com/user-attachments/assets/083cce0d-ece1-4585-b712-c8ab669003e0" />
+
