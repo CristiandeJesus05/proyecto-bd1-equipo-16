@@ -24,9 +24,9 @@ La arquitectura de seguridad de SQL Server opera en tres niveles:
 
 4. **Objetos y Roles (Permissions):** Asignación de permisos (`GRANT SELECT`, `GRANT EXECUTE`) directamente a usuarios o mediante la inclusión a roles definidos por el usuario o por el sistema (ej. `db_owner`)
 
-  <img width="626" height="63" alt="db_owner" src="https://github.com/user-attachments/assets/88f92a03-0f91-4ded-a6a0-b125dec30875" />
-  <img width="591" height="67" alt="grantExcute" src="https://github.com/user-attachments/assets/63e6ce0d-0772-4f88-a83b-0e4b95f9348b" />
-  <img width="631" height="90" alt="grandSelect" src="https://github.com/user-attachments/assets/3fb8fb4b-377f-44b5-9005- d03b98e73e7d" />
+<img width="626" height="63" alt="db_owner" src="https://github.com/user-attachments/assets/88f92a03-0f91-4ded-a6a0-b125dec30875" />
+<img width="591" height="67" alt="grantExcute" src="https://github.com/user-attachments/assets/63e6ce0d-0772-4f88-a83b-0e4b95f9348b" />
+<img width="631" height="90" alt="grandSelect" src="https://github.com/user-attachments/assets/96775d9e-4c72-4708-a578-47c155aaf985" />
 
    
 
