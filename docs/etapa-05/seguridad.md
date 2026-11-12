@@ -1,6 +1,6 @@
 ## Seguridad Manejo de permisos a nivel de usuarios y roles en SQL Server
 
-La **seguridad** en SQL Server permite controlar la autenticación de usuarios y la autorización sobre las operaciones que estos pueden ejecutar en la base de datos. El objetivo principal es implementar la directiva de **mínimo privilegio**, garantizando que cada usuario acceda únicamente a los datos y procedimientos estrictamente necesarios para cumplir su función dentro del sistema
+La **Seguridad** en SQL Server permite controlar la autenticación de usuarios y la autorización sobre las operaciones que estos pueden ejecutar en la base de datos. El objetivo principal es implementar la directiva de **mínimo privilegio**, garantizando que cada usuario acceda únicamente a los datos y procedimientos estrictamente necesarios para cumplir su función dentro del sistema
 ### Ventajas y Aplicaciones
 
 -**Protección de datos sensibles:** Impide que usuarios sin privilegios modifiquen directamente tablas críticas como `Compra`.
@@ -52,25 +52,26 @@ Se ejecutó la consulta de propiedades del servidor para constatar el soporte de
 
 
 **Prueba B (INSERT directo por `usuario_lector`):** El motor denegó la operación por falta de permisos explícitos de inserción sobre la tabla `Compra`
+
 <img width="785" height="91" alt="pruebaB" src="https://github.com/user-attachments/assets/8e02d208-0956-4f8a-80c9-e9801964aaec" />
 
-
 **Prueba C (INSERT mediante `sp_RegistrarCompraSimple` por `usuario_lector`):** Se ejecutó con éxito el procedimiento almacenado autorizando la modificación indirecta de la tabla.
+
 <img width="514" height="87" alt="consultaEjecutadaCorrectamente" src="https://github.com/user-attachments/assets/f37a1ef4-bfbf-442d-9c6c-d5cbd3ebb850" />
 
 
 ### Pruebas a Nivel de Roles 
 
 **Prueba D (SELECT por `usuario_con_rol`):** Al pertenecer al rol `rol_consulta_peliculas`, la consulta retornó los registros de la tabla `Pelicula`
+
 <img width="658" height="97" alt="pruebaD" src="https://github.com/user-attachments/assets/301bb3df-84f1-4ddd-b058-b47dacc58485" />
 
 
 **Prueba E (SELECT por `usuario_sin_rol`):** La consulta fue denegada por no poseer acceso explícito ni heredado a la tabla
+
 <img width="514" height="87" alt="consultaEjecutadaCorrectamente" src="https://github.com/user-attachments/assets/1d115c5b-6d01-4bd0-87ee-737a8db54180" />
 
-
 <img width="778" height="89" alt="pruebaE" src="https://github.com/user-attachments/assets/d5f42bde-5019-42a4-8448-46f62d86b1c8" />
-
 
 Se verificó la viabilidad de delegar operaciones de escritura únicamente a través de procedimientos almacenados autorizados sin otorgar acceso directo a las tablas base (Compra), respetando las reglas del negocio del cine.   Se constató la eficiencia de administrar accesos mediante roles grupales (rol_consulta_peliculas), facilitando el mantenimiento y escalabilidad de la seguridad del sistema.   
 
