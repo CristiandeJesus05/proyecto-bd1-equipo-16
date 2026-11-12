@@ -4,6 +4,7 @@ Tiempo de CPU = 250ms
 Tiempo total de ejecución = 2851 ms
 Cantidad de lecturas lógicas = 4714
 Operación Principal = Clustered Index Scan
+![Sin Índice](./sin_indice.png)
 
 ![[sin_indice.png]]
  
